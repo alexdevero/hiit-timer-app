@@ -1,0 +1,74 @@
+/* Main CSS file */
+:root {
+  --color-gray: #848899;
+  --color-black: #1e2538;
+  --color-orange: #fd7b38;
+  --color-green: #2eb67d;
+  --color-purple: #a07dda;
+}
+
+body,
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+body {
+  color: var(--color-gray);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: var(--color-black);
+}
+
+.app {
+  display: flex;
+  flex: 1;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.app > .container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /* align-items: center; */
+  flex: 1;
+}
+
+.app > .container > .row {
+  width: 100%;
+}
+
+.header-settings-link,
+.header-mode-link {
+  min-width: 24px;
+  padding: 0;
+  margin: 0;
+  line-height: 0;
+}
+
+.header-settings-link,
+.header-mode-link:active,
+.header-mode-link:focus,
+.header-mode-link:hover {
+  outline: 0 !important;
+  border: 0;
+  box-shadow: none !important;
+  text-decoration: none !important;
+}
+
+.header-settings-link,
+.header-mode-link:hover {
+  color: #007bff !important;
+}
+
+.settings-container {
+  max-width: 420px;
+  margin: auto;
+}
