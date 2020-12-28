@@ -1,0 +1,25 @@
+.dark-mode {
+  background: #2d2d2d;
+}
+
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode h4,
+.dark-mode h5,
+.dark-mode h6,
+.dark-mode p,
+.dark-mode li,
+.dark-mode li a,
+.dark-mode header li a,
+.dark-mode header .logo,
+.dark-mode label,
+.dark-mode input,
+.dark-mode input:focus {
+  color: rgb(207, 210, 214) !important;
+}
+
+.dark-mode input,
+.dark-mode input:focus {
+  background: rgb(45, 45, 45);
+}
