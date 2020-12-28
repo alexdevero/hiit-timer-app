@@ -1,0 +1,67 @@
+export const presets = [
+  {
+    id: 'tabata',
+    type: 'Tabata',
+    restTime: 20,
+    workTime: 10,
+    reps: 8,
+    warmUpTime: 120,
+    coolDownTime: 120
+  }, {
+    id: 'hiit',
+    type: 'HIIT',
+    restTime: 30,
+    workTime: 30,
+    reps: 8,
+    warmUpTime: 120,
+    coolDownTime: 120
+  }, {
+    id: '1010',
+    type: '10/10',
+    restTime: 60,
+    workTime: 60,
+    reps: 10,
+    warmUpTime: 120,
+    coolDownTime: 120
+  }, {
+    id: '812',
+    type: '8/12',
+    restTime: 12,
+    workTime: 8,
+    reps: 60,
+    warmUpTime: 120,
+    coolDownTime: 120
+  }, {
+    id: '540',
+    type: '5/40',
+    restTime: 40,
+    workTime: 5,
+    reps: 26,
+    warmUpTime: 120,
+    coolDownTime: 120
+  }, {
+    id: '42',
+    type: '4/2',
+    restTime: 120,
+    workTime: 240,
+    reps: 10,
+    warmUpTime: 120,
+    coolDownTime: 120
+  }, {
+    id: 'wingate',
+    type: 'Wingate',
+    restTime: 240,
+    workTime: 30,
+    reps: 6,
+    warmUpTime: 120,
+    coolDownTime: 120
+  }, {
+    id: 'wintab',
+    type: 'WinTab (Tabata style Wingate)',
+    restTime: 10,
+    workTime: 20,
+    reps: 8,
+    warmUpTime: 120,
+    coolDownTime: 120
+  }
+]
