@@ -29,7 +29,7 @@ export const Header = () => {
               <button
                 className="btn btn-link text-dark header-mode-link ml-2"
                 type="button"
-                onClick={() => handleStateChange('darkMode', !state.darkMode)}
+                onClick={() => handleStateChange({ darkMode: !state.darkMode })}
               >
                 {state.darkMode === false ? (
                   <span aria-label="Sun" title="Toggle dark mode" role="img">
