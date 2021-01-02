@@ -44,7 +44,17 @@ module.exports = {
   },
   target: 'electron-renderer',
   plugins: [
-    new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'HIIT Timer',
+      'meta': {
+        'Content-Security-Policy': {
+          'http-equiv': 'Content-Security-Policy',
+          'content': 'default-src \'self\'; script-src \'self\'; style-src \'self\' \'unsafe-inline\''
+        },
+        // Will generate: <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
+        // Which equals to the following http header: `Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'`
+      }
+    }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development')
     }),
