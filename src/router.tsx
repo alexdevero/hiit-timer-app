@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { HashRouter, Switch, Route } from 'react-router-dom'
 
 import { Home } from './pages/home'
 import { Presets } from './pages/presets'
@@ -14,7 +14,7 @@ import { GlobalStateProvider } from './state/state'
 export const Router = () => {
   return (
     <GlobalStateProvider>
-      <BrowserRouter>
+      <HashRouter>
         <Header />
 
         <div className="app">
@@ -29,7 +29,7 @@ export const Router = () => {
         </div>
 
         <Footer />
-      </BrowserRouter>
+      </HashRouter>
     </GlobalStateProvider>
   )
 }
