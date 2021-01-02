@@ -1,12 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
-// import { /* Link, */ useParams } from 'react-router-dom'
 
 import { GlobalState } from './../state/state'
 
 export const Timer = () => {
   const { state } = useContext(GlobalState)
-
-  const timer = 15 //useParams()
 
   // Main countdown time
   const [seconds, setSeconds] = useState(0)
@@ -15,16 +12,8 @@ export const Timer = () => {
   // const [reps, setReps] = useState(state.reps)
   const [repsDone, setRepsDone] = useState(0)
 
-  // Time types values
-  // const [timeWarmUp, setTimeWarmUp] = useState(state.timeWarmUp)
-  // const [timeWork, setTimeWork] = useState(state.timeWork)
-  // const [timeRest, setTimeRest] = useState(state.timeRest)
-  // const [timeCoolDown, setTimeCoolDown] = useState(state.timeCoolDown)
-
   // Time types activity statuses
-  const [isWarmUpActive, setIsWarmUpActive] = useState(false)
   const [isWorkActive, setIsWorkActive] = useState(false)
-  const [isRestActive, setIsRestActive] = useState(false)
   const [isCoolDownActive, setIsCoolDownActive] = useState(false)
 
   // Timer activity status
@@ -38,22 +27,14 @@ export const Timer = () => {
     // Start the workout either by warmup
     if (state.timeWarmUp > 0) {
       setSeconds(state.timeWarmUp)
-      setIsWarmUpActive(true)
       setWorkoutStage('Warmup')
     } else if (state.timeWork > 0) {
-      // or by first work set
       setRepsDone(repsDone + 1)
       setSeconds(state.timeWork)
       setIsWorkActive(true)
       setWorkoutStage('Work!')
     }
   }
-
-  // useEffect(() => {
-  //   // const seconds = timer % 60 + 60
-
-  //   setSeconds(state.timeCoolDown)
-  // }, [timer])
 
   useEffect(() => {
     let interval: number | null | undefined = null
@@ -67,15 +48,12 @@ export const Timer = () => {
             if (repsDone < state.reps) {
               if (isWorkActive) {
                 setIsWorkActive(false)
-                setIsRestActive(true)
                 setSeconds(state.timeRest)
                 setWorkoutStage('Rest!')
               } else {
-                // if isRestActive
                 setRepsDone(repsDone + 1)
                 setSeconds(state.timeWork)
                 setIsWorkActive(true)
-                setIsRestActive(false)
                 setWorkoutStage('Work!')
               }
             } else {
@@ -84,7 +62,6 @@ export const Timer = () => {
           }
         } else if (isWorkActive) {
           setIsWorkActive(false)
-          setIsRestActive(true)
           setSeconds(state.timeRest)
           setWorkoutStage('Rest!')
         } else {
@@ -125,11 +102,7 @@ export const Timer = () => {
         <button
           className="btn btn-primary btn-md"
           onClick={startCountdown}
-        >Start counter</button>
-
-        {/* <Link to="/">
-          <button className="btn btn-primary btn-md">Back home</button>
-        </Link> */}
+        >Start workout</button>
       </div>
     </div>
   )
