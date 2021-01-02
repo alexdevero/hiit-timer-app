@@ -12,14 +12,14 @@ export const Timer = () => {
   const [seconds, setSeconds] = useState(0)
 
   // Reps
-  const [reps, setReps] = useState(state.reps)
+  // const [reps, setReps] = useState(state.reps)
   const [repsDone, setRepsDone] = useState(0)
 
   // Time types values
-  const [timeWarmUp, setTimeWarmUp] = useState(state.timeWarmUp)
-  const [timeWork, setTimeWork] = useState(state.timeWork)
-  const [timeRest, setTimeRest] = useState(state.timeRest)
-  const [timeCoolDown, setTimeCoolDown] = useState(state.timeCoolDown)
+  // const [timeWarmUp, setTimeWarmUp] = useState(state.timeWarmUp)
+  // const [timeWork, setTimeWork] = useState(state.timeWork)
+  // const [timeRest, setTimeRest] = useState(state.timeRest)
+  // const [timeCoolDown, setTimeCoolDown] = useState(state.timeCoolDown)
 
   // Time types activity statuses
   const [isWarmUpActive, setIsWarmUpActive] = useState(false)
@@ -36,44 +36,44 @@ export const Timer = () => {
     setIsTimerActive(true)
 
     // Start the workout either by warmup
-    if (timeWarmUp > 0) {
-      setSeconds(timeWarmUp)
+    if (state.timeWarmUp > 0) {
+      setSeconds(state.timeWarmUp)
       setIsWarmUpActive(true)
       setWorkoutStage('Warmup')
-    } else if (timeWork > 0) {
+    } else if (state.timeWork > 0) {
       // or by first work set
       setRepsDone(repsDone + 1)
-      setSeconds(timeWork)
+      setSeconds(state.timeWork)
       setIsWorkActive(true)
       setWorkoutStage('Work!')
     }
   }
 
-  useEffect(() => {
-    // const seconds = timer % 60 + 60
+  // useEffect(() => {
+  //   // const seconds = timer % 60 + 60
 
-    setSeconds(timeCoolDown)
-  }, [timer])
+  //   setSeconds(state.timeCoolDown)
+  // }, [timer])
 
   useEffect(() => {
     let interval: number | null | undefined = null
 
     if (isTimerActive) {
       interval = window.setInterval(() => {
-        if (seconds > 0 || repsDone < reps) {
+        if (seconds > 0 || repsDone < state.reps) {
           if (seconds > 0) {
             setSeconds(seconds - 1)
           } else {
-            if (repsDone < reps) {
+            if (repsDone < state.reps) {
               if (isWorkActive) {
                 setIsWorkActive(false)
                 setIsRestActive(true)
-                setSeconds(timeRest)
+                setSeconds(state.timeRest)
                 setWorkoutStage('Rest!')
               } else {
                 // if isRestActive
                 setRepsDone(repsDone + 1)
-                setSeconds(timeWork)
+                setSeconds(state.timeWork)
                 setIsWorkActive(true)
                 setIsRestActive(false)
                 setWorkoutStage('Work!')
@@ -85,14 +85,14 @@ export const Timer = () => {
         } else if (isWorkActive) {
           setIsWorkActive(false)
           setIsRestActive(true)
-          setSeconds(timeRest)
+          setSeconds(state.timeRest)
           setWorkoutStage('Rest!')
         } else {
           if (isCoolDownActive) {
             setWorkoutStage('Finished!')
             clearInterval(interval)
-          } else if (timeCoolDown > 0) {
-            setSeconds(timeCoolDown)
+          } else if (state.timeCoolDown > 0) {
+            setSeconds(state.timeCoolDown)
             setWorkoutStage('Cooldown')
             setIsCoolDownActive(true)
           } else {
@@ -105,7 +105,7 @@ export const Timer = () => {
     }
 
     return () => clearInterval(interval)
-  }, [isTimerActive, seconds]);
+  }, [isTimerActive, seconds])
 
   return (
     <div className="row justify-content-center">
@@ -118,7 +118,7 @@ export const Timer = () => {
 
         <h2 className="h5 mt-0 mb-3 font-weight-bold">{workoutStage}</h2>
 
-        <p>Reps: {repsDone}/{reps}</p>
+        <p>Reps: {repsDone}/{state.reps}</p>
 
         <p>time: {seconds}s</p>
 
