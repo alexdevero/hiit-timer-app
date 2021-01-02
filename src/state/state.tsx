@@ -28,6 +28,14 @@ export const GlobalStateProvider = (props: GlobalStateUI) => {
     timeWork: 60
   })
 
+  useEffect(() => {
+    if (state.darkMode) {
+      document.body.classList.add('dark-mode')
+    } else {
+      document.body.classList.remove('dark-mode')
+    }
+  }, [state])
+
   const handleStateChange = (/* prop, value,*/ payload) => {
     // prop, value => payload { foo: bar }
     setState({
