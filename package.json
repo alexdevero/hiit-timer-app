@@ -41,7 +41,7 @@
     "postpackage": "electron-packager ./ --out=./builds"
   },
   "dependencies": {
-    "postcss": "8.2.1",
+    "postcss": "8.4.31",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-reader": "0.20.0",
